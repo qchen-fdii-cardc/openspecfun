@@ -1,0 +1,10 @@
+# This file is machine-generated - editing it directly is not advised
+
+julia_version = "1.12.6"
+manifest_format = "2.0"
+project_hash = "b6cf2bd3e4a34a3af7edc15fc4bd51adbb322c77"
+
+[[deps.OpenSpecFun]]
+path = "."
+uuid = "8f89f5fa-6f6c-4d8f-a2e9-6b86f88d5f73"
+version = "0.1.0"

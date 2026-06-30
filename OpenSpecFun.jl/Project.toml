@@ -1,0 +1,15 @@
+name = "OpenSpecFun"
+uuid = "8f89f5fa-6f6c-4d8f-a2e9-6b86f88d5f73"
+authors = ["OpenSpecFun Contributors"]
+version = "0.1.0"
+
+[deps]
+
+[compat]
+julia = "1.12"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]

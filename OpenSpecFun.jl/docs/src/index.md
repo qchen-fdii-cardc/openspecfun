@@ -62,3 +62,7 @@ The mapping is useful when you need to jump from the Julia wrapper back to the o
 ## Background Notes
 
 See [Background](background.md) for formulas, source references, and the script that regenerates the reference charts.
+
+## Function Reference
+
+See [Functions](functions.md) for a family-by-family reference to every public function.

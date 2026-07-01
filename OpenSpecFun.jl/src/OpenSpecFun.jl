@@ -661,6 +661,10 @@ function faddeeva_erfcx(z::ComplexF64, relerr::Float64=0.0)
     return faddeeva_w(complex(-imag(z), real(z)), relerr)
 end
 
+"""
+Faddeeva `erfcx(x)` projected to real input/output.
+Source: `Faddeeva/Faddeeva.c`.
+"""
 function faddeeva_erfcx_re(x::Float64)
     z = complex(x, 0.0)
     return real(exp(z * z) * _erfc_complex(z))

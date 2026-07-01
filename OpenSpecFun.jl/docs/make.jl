@@ -10,6 +10,7 @@ makedocs(
     ),
     pages=[
         "Home" => "index.md",
+        "Functions" => "functions.md",
         "Background" => "background.md",
     ],
     checkdocs=:exports,

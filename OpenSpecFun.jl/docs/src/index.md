@@ -58,3 +58,7 @@ Order   = [:function, :type, :constant]
 The package tracks provenance for each public entry point through `FUNCTION_SOURCE_MAP` in the source tree.
 
 The mapping is useful when you need to jump from the Julia wrapper back to the original OpenSpecFun source file while reading the docs or comparing behavior.
+
+## Background Notes
+
+See [Background](background.md) for formulas, source references, and the script that regenerates the reference charts.

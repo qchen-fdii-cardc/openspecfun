@@ -78,17 +78,64 @@ function airy_aip(x)
     return air
 end
 
+function airy_bi(x)
+    air, _, _ = zbiry(x, 0.0, 0, 1)
+    return air
+end
+
+function airy_bip(x)
+    air, _, _ = zbiry(x, 0.0, 1, 1)
+    return air
+end
+
+function bessel_i0(x)
+    yr, _, _, _ = zbesi(x, 0.0, 0.0, 1, 1)
+    return yr[1]
+end
+
+function bessel_j0(x)
+    yr, _, _, _ = zbesj(x, 0.0, 0.0, 1, 1)
+    return yr[1]
+end
+
+function bessel_k0(x)
+    yr, _, _, _ = zbesk(x, 0.0, 0.0, 1, 1)
+    return yr[1]
+end
+
+function bessel_y0(x)
+    yr, _, _, _, _, _ = zbesy(x, 0.0, 0.0, 1, 1)
+    return yr[1]
+end
+
 function main()
     mkpath(OUTPUT_DIR)
 
     xs = collect(range(-3.5, 3.5; length=401))
     airy_values = [airy_ai(x) for x in xs]
     airy_derivative_values = [airy_aip(x) for x in xs]
+    xbi = collect(range(0.2, 3.5; length=331))
+    airy_bi_values = [airy_bi(x) for x in xbi]
+    airy_bip_values = [airy_bip(x) for x in xbi]
     dawson_values = [OpenSpecFun._dawson_real(x) for x in xs]
+    bessel_i0_values = [bessel_i0(x) for x in xs]
+    bessel_j0_values = [bessel_j0(x) for x in xs]
+
+    xk = collect(range(0.2, 8.0; length=320))
+    bessel_k0_values = [bessel_k0(x) for x in xk]
+
+    xy = collect(range(0.2, 20.0; length=420))
+    bessel_y0_values = [bessel_y0(x) for x in xy]
 
     write_svg(joinpath(OUTPUT_DIR, "airy_ai.svg"), "Airy Ai(x)", xs, airy_values)
     write_svg(joinpath(OUTPUT_DIR, "airy_aip.svg"), "Airy Ai'(x)", xs, airy_derivative_values, color="#b45309")
+    write_svg(joinpath(OUTPUT_DIR, "airy_bi.svg"), "Airy Bi(x)", xbi, airy_bi_values, color="#7c3aed")
+    write_svg(joinpath(OUTPUT_DIR, "airy_bip.svg"), "Airy Bi'(x)", xbi, airy_bip_values, color="#be185d")
     write_svg(joinpath(OUTPUT_DIR, "dawson.svg"), "Dawson integral F(x)", xs, dawson_values, color="#047857")
+    write_svg(joinpath(OUTPUT_DIR, "bessel_i0.svg"), "Bessel I0(x)", xs, bessel_i0_values, color="#0f766e")
+    write_svg(joinpath(OUTPUT_DIR, "bessel_j0.svg"), "Bessel J0(x)", xs, bessel_j0_values, color="#1d4ed8")
+    write_svg(joinpath(OUTPUT_DIR, "bessel_k0.svg"), "Bessel K0(x)", xk, bessel_k0_values, color="#b45309")
+    write_svg(joinpath(OUTPUT_DIR, "bessel_y0.svg"), "Bessel Y0(x)", xy, bessel_y0_values, color="#be123c")
 end
 
 main()
